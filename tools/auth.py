@@ -86,7 +86,7 @@ class Auth:
   while self.clock()<deadline:
    sleep(interval)
    if self.clock()>=deadline:break
-   try:return self.accept(self.remote('token',{'client_id':self.config['clientId'],'device_code':row['device_code'],'grant_type':'urn:ietf:params:oauth:grant-type:device_code'}))
+   try:return self.accept(self.remote('token',{'client_id':self.config['clientId'],'scopes':SCOPE,'device_code':row['device_code'],'grant_type':'urn:ietf:params:oauth:grant-type:device_code'}))
    except Remote as error:
     if error.reason=='slow_down':interval=min(120,interval+5)
     elif error.reason!='authorization_pending':raise

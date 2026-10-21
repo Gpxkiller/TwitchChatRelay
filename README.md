@@ -1,6 +1,6 @@
 # TwitchChatRelay
 
-Afficher les messages Twitch dans Minecraft, pour tous les joueurs d'un serveur ou uniquement pour des UUID choisis. Projet autonome de Gpxkiller, licence MIT, préversion **0.1.0**.
+Afficher les messages Twitch dans Minecraft, pour tous les joueurs d'un serveur ou uniquement pour des UUID choisis. Projet autonome de Gpxkiller, licence MIT, préversion **0.1.1**.
 
 Chaque message commence par **[Twitch] en violet**. Le texte est littéral : pas de commande, lien cliquable ou formatage injecté. Aucun compte Twitch, destinataire ou administrateur n'est préconfiguré. Désactivé par défaut.
 
@@ -40,7 +40,7 @@ Cela crée `relay-keys.json` et `survival.secret` privés sans afficher la clé.
 6. Mettre `enabled: true` dans le `bridge.json` privé. Démarrer le relais avec :
 
 ```sh
-java -cp /opt/twitch-chat-relay/twitch-chat-relay-0.1.0.jar fr.gpxkiller.twitch.TwitchBridge /var/lib/twitch-chat-relay
+java -cp /opt/twitch-chat-relay/twitch-chat-relay-0.1.1.jar fr.gpxkiller.twitch.TwitchBridge /var/lib/twitch-chat-relay
 ```
 
 7. Prévoir le renouvellement **chaque minute**, sous le même compte : `python3 .../tools/auth.py --directory /var/lib/twitch-chat-relay refresh`. Des exemples systemd sont fournis dans `deploy/`. Adapter les chemins puis activer les unités avec les outils habituels de l'hôte. Aucun installateur n'agit automatiquement.

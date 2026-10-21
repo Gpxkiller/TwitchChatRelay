@@ -1,5 +1,5 @@
 name: TwitchChatRelay
-version: 0.1.0
+version: 0.1.1
 main: fr.gpxkiller.twitch.TwitchPlugin
 api-version: '26.2'
 author: Gpxkiller

@@ -1,4 +1,4 @@
-# Validation 0.1.0
+# Validation 0.1.1
 
 Extraction autonome, sans données de production, sans accès au VPS et sans nouveau compte Twitch autorisé.
 

@@ -34,6 +34,7 @@ class OAuthTests(unittest.TestCase):
   shown=[]
   def sleep(seconds):self.now+=seconds
   self.auth.authorize(shown.append,sleep);self.assertIn('https://www.twitch.tv/activate',shown[0]);self.assertNotIn('untrusted',shown[0]);self.assertNotIn('fixture-device',shown[0])
+  token_calls=[c for c in self.calls if c[0]=='token'];self.assertEqual(token_calls[0][1]['scopes'],a.SCOPE)
  def test_slow_down_is_observed(self):
   count=0;waits=[]
   def remote(endpoint,fields=None,token=None):

@@ -14,10 +14,10 @@ jobs:
           cache: maven
       - run: mvn -B clean package
       - run: python3 -m unittest discover -s tests -v
-      - run: python3 tools/smoke.py target/twitch-chat-relay-0.1.0.jar
+      - run: python3 tools/smoke.py target/twitch-chat-relay-0.1.1.jar
       - run: |
           mkdir dist
-          cp target/twitch-chat-relay-0.1.0.jar dist/
+          cp target/twitch-chat-relay-0.1.1.jar dist/
           python3 tools/package.py
           cd dist && sha256sum * > SHA256SUMS
       - uses: actions/upload-artifact@v4
