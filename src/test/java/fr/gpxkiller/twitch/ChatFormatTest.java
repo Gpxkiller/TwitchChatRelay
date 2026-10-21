@@ -6,6 +6,12 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ChatFormatTest {
+    @Test void authorAndBodyAreYellowButTagStaysPurple() {
+        var message=ChatFormat.message("examplechannel", "Viewer", "Bonjour");
+        assertEquals(NamedTextColor.LIGHT_PURPLE,message.color());
+        assertEquals(NamedTextColor.YELLOW,message.children().get(1).color());
+        assertEquals(NamedTextColor.YELLOW,message.children().get(2).color());
+    }
     @Test void startsWithExactPurpleTwitchTag() {
         var message = ChatFormat.message("examplechannel", "Viewer", "Bonjour");
         assertEquals("[Twitch]", ((TextComponent) message).content());

@@ -1,4 +1,6 @@
-# Validation 0.1.1
+# Validation 0.1.2
+
+Couleurs : auteur et corps jaunes, préfixe violet inchangé ; assertions Adventure et texte littéral. La suite Java locale passe (38 tests, un test de permissions POSIX ignoré sous Windows). Aucun test de nouvelle connexion OAuth réelle pour ce changement de présentation.
 
 Extraction autonome, sans données de production, sans accès au VPS et sans nouveau compte Twitch autorisé.
 

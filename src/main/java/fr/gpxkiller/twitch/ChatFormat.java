@@ -10,7 +10,7 @@ final class ChatFormat {
     static Component message(String channel, String author, String text) {
         return Component.text("[Twitch]", NamedTextColor.LIGHT_PURPLE)
             .append(Component.text(" [" + RelayRules.plain(channel, 25) + "] ", NamedTextColor.GRAY))
-            .append(Component.text(RelayRules.plain(author, 32) + " : ", NamedTextColor.WHITE))
-            .append(Component.text(RelayRules.plain(text, 300), NamedTextColor.GRAY));
+            .append(Component.text(RelayRules.plain(author, 32) + " : ", NamedTextColor.YELLOW))
+            .append(Component.text(RelayRules.plain(text, 300), NamedTextColor.YELLOW));
     }
 }
