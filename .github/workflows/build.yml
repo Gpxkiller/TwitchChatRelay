@@ -1,0 +1,43 @@
+name: Build and isolated relay tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+      - run: mvn -B clean package
+      - run: python3 -m unittest discover -s tests -v
+      - run: python3 tools/smoke.py target/twitch-chat-relay-0.1.0.jar
+      - run: |
+          mkdir dist
+          cp target/twitch-chat-relay-0.1.0.jar dist/
+          python3 tools/package.py
+          cd dist && sha256sum * > SHA256SUMS
+      - uses: actions/upload-artifact@v4
+        with:
+          name: TwitchChatRelay
+          path: dist/*
+  release:
+    if: startsWith(github.ref, 'refs/tags/v')
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: TwitchChatRelay
+          path: dist
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: gh release create "$RELEASE_TAG" dist/* --title "TwitchChatRelay $RELEASE_TAG" --prerelease --notes-file CHANGELOG.md

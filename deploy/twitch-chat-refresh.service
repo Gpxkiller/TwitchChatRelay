@@ -1,0 +1,13 @@
+[Unit]
+Description=Validate and renew local Twitch read-only authorization
+[Service]
+Type=oneshot
+User=twitchrelay
+Group=twitchrelay
+UMask=0077
+ExecStart=/usr/bin/python3 /opt/twitch-chat-relay/tools/auth.py --directory /var/lib/twitch-chat-relay refresh
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/twitch-chat-relay
+PrivateTmp=true

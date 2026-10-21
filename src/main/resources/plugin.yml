@@ -1,0 +1,13 @@
+name: TwitchChatRelay
+version: 0.1.0
+main: fr.gpxkiller.twitch.TwitchPlugin
+api-version: '26.2'
+author: Gpxkiller
+commands:
+  twitch:
+    description: Configurer le chat Twitch sur ce serveur
+    usage: /twitch aide
+permissions:
+  twitchchatrelay.admin:
+    description: Configurer les chaînes Twitch et leurs destinataires locaux
+    default: false

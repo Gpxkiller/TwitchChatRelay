@@ -1,0 +1,7 @@
+[Unit]
+Description=Periodic validation and renewal of Twitch authorization
+[Timer]
+OnBootSec=5
+OnUnitActiveSec=60
+[Install]
+WantedBy=timers.target

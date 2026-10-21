@@ -1,0 +1,17 @@
+target/
+dist/
+__pycache__/
+.venv/
+runtime/
+*.secret
+*.key
+*.pem
+*.log
+tokens.json
+candidate.json
+bridge.json
+relay-keys.json
+settings.yml
+config.yml
+!src/main/resources/config.yml
+.env*

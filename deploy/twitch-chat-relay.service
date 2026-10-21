@@ -1,0 +1,18 @@
+[Unit]
+Description=Standalone local Twitch EventSub bridge
+After=network-online.target
+[Service]
+Type=simple
+User=twitchrelay
+Group=twitchrelay
+UMask=0077
+ExecStart=/usr/bin/java -cp /opt/twitch-chat-relay/twitch-chat-relay-0.1.0.jar fr.gpxkiller.twitch.TwitchBridge /var/lib/twitch-chat-relay
+Restart=on-failure
+RestartSec=10
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/twitch-chat-relay
+PrivateTmp=true
+[Install]
+WantedBy=multi-user.target
